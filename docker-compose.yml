@@ -1,0 +1,15 @@
+services:
+  backend:
+    build: ./app/backend
+    image: lab-backend:1.0
+    environment:
+      APP_COLOR: blue
+  frontend:
+    build: ./app/frontend
+    image: lab-frontend:1.0
+    environment:
+      BACKEND_HOST: backend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
